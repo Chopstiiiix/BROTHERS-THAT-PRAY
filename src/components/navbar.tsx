@@ -19,6 +19,7 @@ export function Navbar() {
     { href: '/live', label: 'Live' },
     { href: '/sermons', label: 'Sermons' },
     { href: '/events', label: 'Events' },
+    { href: '/store', label: 'Store' },
     { href: '/donate', label: 'Donate' },
   ]
 
