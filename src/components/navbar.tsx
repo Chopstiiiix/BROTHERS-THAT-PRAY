@@ -15,6 +15,7 @@ export function Navbar() {
   const isActive = (path: string) => pathname === path
 
   const publicLinks = [
+    { href: '/about', label: 'About Us' },
     { href: '/live', label: 'Live' },
     { href: '/sermons', label: 'Sermons' },
     { href: '/events', label: 'Events' },
