@@ -2,12 +2,13 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative text-primary-100 grunge-texture" style={{ backgroundColor: '#543507' }}>
+      <div className="absolute inset-0 bg-black/10" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold text-white mb-2">Brothers That Pray</h3>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-primary-200 max-w-md">
               A community of men united in faith, supporting one another through prayer,
               fellowship, and spiritual growth.
             </p>
@@ -56,7 +57,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <div className="mt-12 pt-8 border-t border-primary-600 text-center text-primary-200 text-sm">
           <p>&copy; {new Date().getFullYear()} Brothers That Pray. All rights reserved.</p>
         </div>
       </div>

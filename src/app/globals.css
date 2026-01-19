@@ -16,4 +16,33 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  .grunge-texture {
+    position: relative;
+  }
+
+  .grunge-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+      linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.25) 100%);
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .grunge-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 15%, rgba(255,255,255,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 85%, rgba(0,0,0,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(139,90,43,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
 }

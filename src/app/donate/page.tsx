@@ -73,7 +73,7 @@ export default function DonatePage() {
           Support Our Ministry
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Your generous donations help us continue our mission of building a strong
+          Your generous donations help us expand our mission of building a strong
           community of men united in faith.
         </p>
       </div>
@@ -169,7 +169,7 @@ export default function DonatePage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full"
+                  className="w-full bg-primary-700 text-white hover:bg-primary-800"
                   isLoading={isLoading}
                   disabled={!selectedAmount || selectedAmount < 1}
                 >
