@@ -1,17 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
+      <section className="relative text-white" style={{ backgroundColor: '#543507' }}>
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Brothers That Pray
-            </h1>
+            <Image
+              src="/logo.png"
+              alt="Brothers That Pray"
+              width={400}
+              height={150}
+              className="mx-auto mb-6"
+              priority
+            />
             <p className="text-xl md:text-2xl text-primary-100 mb-8">
               A community of men united in faith, supporting one another through
               prayer, fellowship, and spiritual growth.
