@@ -1,71 +1,6 @@
-'use client'
-
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { createDonationIntent } from '@/actions/donations'
-
-const presetAmounts = [25, 50, 100, 250, 500]
 
 export default function DonatePage() {
-  const [amount, setAmount] = useState<number | ''>('')
-  const [customAmount, setCustomAmount] = useState('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState('')
-
-  const selectedAmount = amount || (customAmount ? parseFloat(customAmount) : 0)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-
-    const formData = new FormData()
-    formData.append('amount', selectedAmount.toString())
-    if (name) formData.append('name', name)
-    if (email) formData.append('email', email)
-    if (message) formData.append('message', message)
-
-    const result = await createDonationIntent(formData)
-
-    if (result.error) {
-      setError(result.error)
-    } else {
-      setSuccess(true)
-    }
-
-    setIsLoading(false)
-  }
-
-  if (success) {
-    return (
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Card>
-          <CardContent className="py-12 text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
-            <p className="text-gray-600 mb-6">
-              Your donation intent has been recorded. Payment processing will be available soon.
-            </p>
-            <p className="text-sm text-gray-500">
-              (Stripe integration coming soon)
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
@@ -83,103 +18,19 @@ export default function DonatePage() {
           <CardHeader>
             <h2 className="text-xl font-semibold text-gray-900">Make a Donation</h2>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Preset Amounts */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Select Amount
-                </label>
-                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-                  {presetAmounts.map((preset) => (
-                    <button
-                      key={preset}
-                      type="button"
-                      onClick={() => {
-                        setAmount(preset)
-                        setCustomAmount('')
-                      }}
-                      className={`py-3 px-4 rounded-lg border-2 font-medium transition-colors ${
-                        amount === preset
-                          ? 'border-primary-600 bg-primary-50 text-primary-700'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                      }`}
-                    >
-                      ${preset}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Custom Amount */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Or enter a custom amount
-                </label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                  <input
-                    type="number"
-                    min="1"
-                    step="0.01"
-                    value={customAmount}
-                    onChange={(e) => {
-                      setCustomAmount(e.target.value)
-                      setAmount('')
-                    }}
-                    placeholder="Enter amount"
-                    className="w-full pl-8 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-              </div>
-
-              {/* Donor Info */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Input
-                  label="Name (optional)"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Your name"
-                />
-                <Input
-                  type="email"
-                  label="Email (optional)"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              {/* Message */}
-              <Textarea
-                label="Message (optional)"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Add a note with your donation..."
-                rows={3}
-              />
-
-              {error && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                  {error}
-                </div>
-              )}
-
-              <div className="pt-4">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary-700 text-white hover:bg-primary-800"
-                  isLoading={isLoading}
-                  disabled={!selectedAmount || selectedAmount < 1}
-                >
-                  Donate ${selectedAmount || 0}
-                </Button>
-                <p className="text-center text-sm text-gray-500 mt-3">
-                  Stripe payment integration coming soon
-                </p>
-              </div>
-            </form>
+          <CardContent className="py-8 text-center">
+            <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Coming Soon</h3>
+            <p className="text-gray-600 mb-4">
+              Our donation system is currently being set up. Please check back soon!
+            </p>
+            <p className="text-sm text-gray-500">
+              In the meantime, please contact us directly for donation inquiries.
+            </p>
           </CardContent>
         </Card>
 
