@@ -8,7 +8,7 @@ const products = [
     name: 'BTP T-Shirt',
     description: 'Classic Brothers That Pray t-shirt with logo',
     price: 0.00,
-    image: '/products/tshirt.jpg',
+    image: '/products/tshirt.png',
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const products = [
     name: 'Prayer Journal',
     description: 'Guided prayer journal for daily devotion',
     price: 0.00,
-    image: '/products/journal.jpg',
+    image: '/products/journal.png',
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const products = [
     name: 'BTP Lapel Pin',
     description: 'Elegant lapel pin with Brothers That Pray emblem',
     price: 0.00,
-    image: '/products/lapel-pin.jpg',
+    image: '/products/lapel-pin.png',
   },
   {
     id: 6,
